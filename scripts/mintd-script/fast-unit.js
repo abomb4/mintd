@@ -2,16 +2,16 @@
 const lib = require('mintd-script/lib');
 
 //
-// 初始血量 2800，每波增加 800 ，到 100 波时大约有 80000
+// 初始血量 800，每波增加 300 ，到 100 波时大约有 30000
 //
 
 // 仅攻击核心的陆地敌人
 const onlyCoreGroundUnit = (() => {
 
     // 每几波进行增加，设置 5 则第 6, 11, 16 波开始增加
-    const WAVE_STEP_SIZE = 3;
+    const WAVE_STEP_SIZE = 1;
     // 每次增加血量
-    const ADD_LIFE = 800 * WAVE_STEP_SIZE;
+    const ADD_LIFE = 120 * WAVE_STEP_SIZE;
 
     /**
      * 计算增加了几次生命值后对应的受伤值是多少
@@ -66,7 +66,7 @@ const onlyCoreGroundUnit = (() => {
 
 const selfBoom = (() => {
 
-    const bullet = new BombBulletType(200, 40, "shell");
+    const bullet = new BombBulletType(100, 40, "shell");
     // const bullet = extendContent(BombBulletType, 'booomb', {});
     bullet.hitEffect = Fx.pulverize;
     bullet.lifetime = 30;
@@ -79,7 +79,6 @@ const selfBoom = (() => {
             this.super$load();
         },
     });
-    w.name = 'eruption';
     w.reload = 120;
     w.bullet = bullet;
     w.inaccuracy = 0;
@@ -101,7 +100,7 @@ const unitType = (() => {
     //         this.super$load();
     //     },
     // });
-    const unit = extendContent(UnitType, 'strong-unit', {
+    const unit = extendContent(UnitType, 'fast-unit', {
         load() {
             this.create(onlyCoreGroundUnit);
             // this.weapon = terminatorMainWeapon;
