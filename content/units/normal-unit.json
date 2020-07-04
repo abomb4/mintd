@@ -4,6 +4,6 @@
     "mass": 501211,
     "hitsize": 8,
     "flying": false,
-    "health": 1200,
+    "health": 500,
     "rotateWeapon": false
 }
