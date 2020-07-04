@@ -1,0 +1,9 @@
+{
+    "speed": 0.2,
+    "drag": 0.4,
+    "mass": 501211,
+    "hitsize": 8,
+    "flying": false,
+    "health": 130,
+    "rotateWeapon": false
+}

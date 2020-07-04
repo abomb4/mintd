@@ -1,0 +1,14 @@
+name: mintd
+displayName: Mindustry Tower Defence 塔防
+author: 滞人
+description: '''
+传统塔防！在附带的塔防地图中，敌人不会攻击核心以外的目标，并且行动路线不允许造任何方块。
+敌人还会随着波数的增加而变的更结实。
+
+Traditional tower defence mode! In a tower defence map, enemys won't attack any target expect your core, and we cannot build any block on enemy road.
+Enemys will be stronger with the wave number increments.
+
+0.1.0：init
+'''
+version: 0.1.0
+minGameVersion: 104

@@ -1,0 +1,17 @@
+{
+    "conditionWave": 50,
+    "loadout": "basicNucleus",
+    "startingItems": [
+        {"item": "copper", "amount": 400},
+        {"item": "lead", "amount": 400},
+        {"item": "titanium", "amount": 100}
+    ],
+    "requirements": [
+        {
+            "type": "ZoneWave",
+            "zone": "stainedMountains",
+            "wave": 60
+        }
+    ],
+    "resources": ["copper", "lead", "coal", "sand", "titanium", "thorium"]
+}
