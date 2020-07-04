@@ -11,7 +11,7 @@ const onlyCoreGroundUnit = (() => {
     // 每几波进行增加，设置 5 则第 6, 11, 16 波开始增加
     const WAVE_STEP_SIZE = 1;
     // 每次增加血量
-    const ADD_LIFE = 120 * WAVE_STEP_SIZE;
+    const ADD_LIFE = 300 * WAVE_STEP_SIZE;
 
     /**
      * 计算增加了几次生命值后对应的受伤值是多少
@@ -55,8 +55,8 @@ const onlyCoreGroundUnit = (() => {
                 this.moveToCore(Pathfinder.PathTarget.enemyCores);
             },
             calculateDamage(amount) {
-                // 最低也有 0.01 的伤害
-                return Math.max(0.001, amount * waveDamageMultipler(this.getType().health));
+                // 最低也有 0.000001 的伤害
+                return Math.max(0.000001, amount * waveDamageMultipler(this.getType().health));
             },
         });
         return u;

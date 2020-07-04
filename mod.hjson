@@ -8,7 +8,7 @@ description: '''
 Traditional tower defence mode! In a tower defence map, enemys won't attack any target expect your core, and we cannot build any block on enemy road.
 Enemys will be stronger with the wave number increments.
 
-0.1.1: Harder now; add Fast Unit
+0.1.2: More harder, 100 wave may be a milestone
 '''
-version: 0.1.1
+version: 0.1.2
 minGameVersion: 104
