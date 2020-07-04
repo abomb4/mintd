@@ -2,14 +2,14 @@
 const lib = require('mintd/lib');
 
 //
-// 初始血量 130，每 1 波增加 8 ，到 1000 波时大约有 8000+
+// 初始血量 130，每 1 波增加 45 ，到 1000 波时大约有 45000+
 //
 
 // 仅攻击核心的陆地敌人
 const onlyCoreGroundUnit = (() => {
 
     // 每次增加血量
-    const ADD_LIFE = 11;
+    const ADD_LIFE = 45;
     // 每几波进行增加，设置 5 则第 6, 11, 16 波开始增加
     const WAVE_STEP_SIZE = 1;
 
@@ -55,8 +55,8 @@ const onlyCoreGroundUnit = (() => {
                 this.moveToCore(Pathfinder.PathTarget.enemyCores);
             },
             calculateDamage(amount) {
-                // 最低也有 1 的伤害
-                return Math.max(1, amount * waveDamageMultipler(this.getType().health));
+                // 最低也有 0.01 的伤害
+                return Math.max(0.01, amount * waveDamageMultipler(this.getType().health));
             },
         });
         return u;

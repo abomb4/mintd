@@ -4,7 +4,7 @@
     "mass": 501211,
     "hitsize": 9,
     "flying": false,
-    "health": 600,
+    "health": 3400,
     "rotateWeapon": false,
     "immunities": [ "burning", "melting" ]
 }
