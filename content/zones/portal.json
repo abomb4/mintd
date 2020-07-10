@@ -4,7 +4,8 @@
     "startingItems": [
         {"item": "copper", "amount": 800},
         {"item": "lead", "amount": 800},
-        {"item": "silicon", "amount": 300},
+        {"item": "silicon", "amount": 100},
+        {"item": "metaglass", "amount": 100},
         {"item": "titanium", "amount": 200},
         {"item": "thorium", "amount": 100}
     ],
