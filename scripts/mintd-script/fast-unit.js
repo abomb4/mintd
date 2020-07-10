@@ -58,6 +58,12 @@ const onlyCoreGroundUnit = (() => {
                 // 最低也有 0.000001 的伤害
                 return Math.max(0.000001, amount * waveDamageMultipler(this.getType().health));
             },
+            avoidOthers() {
+                const realMass = this.mass();
+                this.type.mass = 10;
+                this.super$avoidOthers();
+                this.type.mass = realMass;
+            },
         });
         return u;
     });

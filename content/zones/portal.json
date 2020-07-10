@@ -1,0 +1,24 @@
+{
+    "conditionWave": 50,
+    "loadout": "basicNucleus",
+    "startingItems": [
+        {"item": "copper", "amount": 800},
+        {"item": "lead", "amount": 800},
+        {"item": "silicon", "amount": 300},
+        {"item": "titanium", "amount": 200},
+        {"item": "thorium", "amount": 100}
+    ],
+    "requirements": [
+        {
+            "type": "ZoneWave",
+            "zone": "the-beginning",
+            "wave": 50
+        }
+    ],
+    "configureObjective": {
+        "type": "ZoneWave",
+        "zone": "portal",
+        "wave": 50
+    },
+    "resources": ["copper", "lead", "coal", "sand", "scrap", "titanium", "thorium"]
+}
