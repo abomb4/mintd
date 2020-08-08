@@ -11,7 +11,7 @@ Enemys will be stronger with the wave number increments.
 塔防创意来自 @Storm_Pony ，我来实现和加一些神奇的东西。
 
 0.2.0: Adjust speed, fast unit slower, others faster; Add a new map with teleporter; Units now avoid others.
-0.2.2: The new map shoundn't have deep water
+0.2.3: White Walk Floor is 'really' floor now, not a 'walkable unknown block'
 '''
-version: 0.2.2
+version: 0.2.3
 minGameVersion: 104

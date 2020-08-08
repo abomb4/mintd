@@ -41,13 +41,8 @@ exports.forceProjectRender = function (render) {
     return x;
 }
 
-exports.aModName = "滞人的playground";
+exports.aModName = "mindustry-tower-defence";
 
-exports.playerShield = (() => {
-
-    function initPlayerShield(player) {
-    };
-    return {
-        update(player) {},
-    };
-})();
+exports.loadRegion = function(name) {
+    return Core.atlas.find(exports.aModName + '-' + name, Core.atlas.find("clear"))
+}
