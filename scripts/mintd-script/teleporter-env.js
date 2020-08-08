@@ -105,7 +105,7 @@ const teleporter = (() => {
     // 传送生效范围，size单位
     const TELEPORTER_RADIUS = 10;
     // 传送距离，block 单位（x8 = 实际距离）
-    const RANGE = 120;
+    const RANGE = 500;
     // 不可建造方格，多个传送器不能离得太近
     const UNBUILDABLE_RADIUS = 2;
     // 小范围内多少单位则不进行传送
