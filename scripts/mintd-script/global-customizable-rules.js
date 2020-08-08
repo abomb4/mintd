@@ -297,7 +297,7 @@ const GLOBAL_RULES = (() => {
     const ruleBlock = extendContent(Block, "rule-block", {
         load() {
             this.super$load();
-            this.solid = false;
+            this.solid = true;
             this.configurable = true;
             this.destructible = false;
             this.targetable = false;
