@@ -1,0 +1,24 @@
+{
+    "conditionWave": 30,
+    "loadout": "bXNjaAB4nGNgYWBhZGDJS8xNZWBNzi9KNWJk4AfRumn5pXkpiSWZ+XkMDAyMIAQkgAAADoEJrw==",
+    "startingItems": [
+        {"item": "copper", "amount": 800},
+        {"item": "lead", "amount": 1000},
+        {"item": "graphite", "amount": 300},
+        {"item": "titanium", "amount": 300},
+        {"item": "thorium", "amount": 200}
+    ],
+    "requirements": [
+        {
+            "type": "ZoneWave",
+            "zone": "the-beginning",
+            "wave": 75
+        }
+    ],
+    "configureObjective": {
+        "type": "ZoneWave",
+        "zone": "a-flood-of-enemys",
+        "wave": 30
+    },
+    "resources": ["copper", "lead", "coal", "sand", "titanium", "thorium"]
+}

@@ -286,7 +286,9 @@ const GLOBAL_RULES = (() => {
                 this.super$read(stream, revision);
                 this.message = stream.readUTF();
                 this.message.split("\n").forEach(v => {
-                    GLOBAL_RULES.addRule(v);
+                    if (v != "") {
+                        GLOBAL_RULES.addRule(v);
+                    }
                 });
             },
         });
