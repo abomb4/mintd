@@ -4,6 +4,7 @@
     "configurable": true,
     "unloadable": false,
     "breakable": false,
+    "targetable": false,
     "solid": false,
     "health": 400,
     "buildVisibility": "sandboxOnly",
