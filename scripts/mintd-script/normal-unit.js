@@ -60,7 +60,7 @@ const onlyCoreGroundUnit = (() => {
             },
             avoidOthers() {
                 const realMass = this.mass();
-                this.type.mass = 15;
+                this.type.mass = 12;
                 this.super$avoidOthers();
                 this.type.mass = realMass;
             },

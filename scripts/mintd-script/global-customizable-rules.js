@@ -93,8 +93,8 @@ const GLOBAL_RULES = (() => {
         }));
         Events.on(EventType.StateChangeEvent, cons(v => {
             if (!Vars.state.isEditor() && v.from == GameState.State.menu && v.to == GameState.State.playing) {
-                for (var i in unloadListeners) {
-                    unloadListeners[i]();
+                for (var i in loadListeners) {
+                    loadListeners[i]();
                 }
             }
         }));
@@ -103,6 +103,13 @@ const GLOBAL_RULES = (() => {
                 const wave = Vars.state.wave;
                 for (var i in waveListeners) {
                     waveListeners[i](wave);
+                }
+            }
+        }));
+        Events.on(EventType.StateChangeEvent, cons(v => {
+            if (!Vars.state.isEditor() && v.from == GameState.State.playing && v.to != GameState.State.playing) {
+                for (var i in unloadListeners) {
+                    unloadListeners[i]();
                 }
             }
         }));
@@ -227,6 +234,9 @@ const GLOBAL_RULES = (() => {
         });
         EVENT_REGISTER.addWaveListener('global.wave.wave', (wave) => {
             tryModifyWave(wave);
+        });
+        EVENT_REGISTER.addUnloadListener('global.wave.unload', () => {
+            delete rules.wave;
         });
         // -=-=-=-=-=-=-=-=-=-=-=- ! Wave rules -=-=-=-=-=-=-=-=-=-=-=-
 

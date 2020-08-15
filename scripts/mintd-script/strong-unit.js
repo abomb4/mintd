@@ -2,7 +2,7 @@
 const lib = require('mintd-script/lib');
 
 //
-// 初始血量 2800，每波增加 1200 ，到 100 波时大约有 120000
+// 初始血量 3200，每波增加 1250 ，到 100 波时大约有 125000
 //
 
 // 仅攻击核心的陆地敌人
@@ -11,7 +11,7 @@ const onlyCoreGroundUnit = (() => {
     // 每几波进行增加，设置 5 则第 6, 11, 16 波开始增加
     const WAVE_STEP_SIZE = 3;
     // 每次增加血量
-    const ADD_LIFE = 1200 * WAVE_STEP_SIZE;
+    const ADD_LIFE = 1250 * WAVE_STEP_SIZE;
 
     /**
      * 计算增加了几次生命值后对应的受伤值是多少
@@ -60,7 +60,7 @@ const onlyCoreGroundUnit = (() => {
             },
             avoidOthers() {
                 const realMass = this.mass();
-                this.type.mass = 40;
+                this.type.mass = 38;
                 this.super$avoidOthers();
                 this.type.mass = realMass;
             },

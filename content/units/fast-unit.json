@@ -4,7 +4,7 @@
     "mass": 501211,
     "hitsize": 8,
     "flying": false,
-    "health": 800,
+    "health": 600,
     "rotateWeapon": false,
     "immunities": [ "wet", "tarred", "freezing" ]
 }

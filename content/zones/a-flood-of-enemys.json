@@ -4,9 +4,9 @@
     "startingItems": [
         {"item": "copper", "amount": 800},
         {"item": "lead", "amount": 1000},
-        {"item": "graphite", "amount": 300},
-        {"item": "titanium", "amount": 300},
-        {"item": "thorium", "amount": 200}
+        {"item": "graphite", "amount": 100},
+        {"item": "titanium", "amount": 100},
+        {"item": "thorium", "amount": 80}
     ],
     "requirements": [
         {
