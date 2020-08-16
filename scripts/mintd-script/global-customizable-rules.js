@@ -107,7 +107,7 @@ const GLOBAL_RULES = (() => {
             }
         }));
         Events.on(EventType.StateChangeEvent, cons(v => {
-            if (!Vars.state.isEditor() && v.from == GameState.State.playing && v.to != GameState.State.playing) {
+            if (!Vars.state.isEditor() && v.from == GameState.State.playing && v.to == GameState.State.menu) {
                 for (var i in unloadListeners) {
                     unloadListeners[i]();
                 }

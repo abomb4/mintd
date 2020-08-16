@@ -5,8 +5,8 @@ const ShieldHolder = (() => {
     const SHIELD_ID = 0;
 
     const map = {}
-    const WAVE_STRENGTH = 3000;     // 每波增血
-    const DEFAULT_CHARGE = 10000;    // 默认血量
+    const WAVE_STRENGTH = 1500;     // 每波增血
+    const DEFAULT_CHARGE = 6000;    // 默认血量
     const CHARGE_TIME = 12 * 60;    // 充能所需秒数
     const MAX_RADIUS = 42;          // 最大范围
     const MIN_RADIUS = 24;          // 最小范围
@@ -42,10 +42,15 @@ const ShieldHolder = (() => {
         function setBornWave(v) { entity.bornWave = v; }
         function getBornWave() { return entity.bornWave; }
 
+        function is_lighting(trait) {
+            var type = trait.getBulletType();
+            return type == Bullets.damageLightning || type == Bullets.arc || type == Bullets.lightning;
+        }
         function handleDamage(trait) {
             trait.absorb();
             Effects.effect(Fx.absorb, trait);
-            setPower(getPower() - trait.getShieldDamage())
+            var dmg = is_lighting(trait) ? trait.getShieldDamage() / 4 : trait.getShieldDamage();
+            setPower(getPower() - dmg);
             if (getPower() <= 0) {
                 setPower(0);
                 setBroken(true);
@@ -133,6 +138,7 @@ const ShieldHolder = (() => {
         function debugDump() {
             print('id: ' + entity.id + ', power: ' + getPower() + ', hit: ' + getHit() + ', broken: ' + getBroken() + ', player: ' + entity.unit);
         }
+
         return {
             setPower: setPower,
             getPower: getPower,
@@ -160,6 +166,54 @@ const ShieldHolder = (() => {
             },
         };
     }
+
+    // 根据 Logic.java ，护盾要想起到防护作用，必须在 bulletGroup 之后进行 update，
+    // 即把 update 函数放在一个虚拟的 tile 或 fire group 中。
+
+    var fakeFireAdded = false;
+    var typeid;
+    const createFakeFire = prov(() => extend(Fire, {
+        add() {
+            if (!fakeFireAdded) {
+                print('add!');
+                fakeFireAdded = true;
+                this.super$add();
+            }
+        },
+        removed() { fakeFireAdded = false; },
+        reset() {},
+        read(data) {},
+        write(data) {},
+        getTypeID() { return typeid; },
+        readSave(stream, version) { this.add(); },
+        writeSave(stream) { },
+        update() {
+            for (var i in map) {
+                var shield = map[i];
+                if (shield) {
+                    shield.defence();
+                }
+            }
+        },
+    }));
+    typeid = new TypeID(lib.aModName + "-fakeFireShield", createFakeFire);
+
+    Events.on(EventType.WorldLoadEvent, run(() => {
+        // If not, may not we need.
+        if (!Vars.state.isEditor() && Vars.world.getMap()) {
+            if (!fakeFireAdded) {
+                createFakeFire.get().add();
+            }
+        }
+    }));
+    Events.on(EventType.StateChangeEvent, cons(v => {
+        if (!Vars.state.isEditor() && v.from == GameState.State.menu && v.to == GameState.State.playing) {
+            if (!fakeFireAdded) {
+                createFakeFire.get().add();
+            }
+        }
+    }));
+    // -=-=-=- Fake fire end -=-=-=-
 
     function getShield(unit, init, bornWave) {
         if (init || map[unit.id] == null) {
@@ -239,7 +293,6 @@ const onlyCoreGroundUnit = (() => {
                 // no state driven, so move in update()
                 this.moveToCore(Pathfinder.PathTarget.enemyCores);
                 if (shield) {
-                    shield.defence();
                     shield.recharge();
                 }
             },
@@ -344,7 +397,9 @@ const onlyCoreGroundUnit = (() => {
             },
             calculateDamage(amount) {
                 // 最低也有 0.000001 的伤害
-                return Math.max(0.000001, amount * waveDamageMultipler(this.getType().health));
+                const dmg = Math.max(0.000001, amount * waveDamageMultipler(this.getType().health));
+                // 盾没坏的话，只造成 1/10 伤害
+                return shield.getBroken() ? dmg : dmg / 10;
             },
             avoidOthers() {
                 const realMass = this.mass();
