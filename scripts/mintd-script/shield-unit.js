@@ -5,9 +5,9 @@ const ShieldHolder = (() => {
     const SHIELD_ID = 0;
 
     const map = {}
-    const WAVE_STRENGTH = 1600;     // 每波增血
-    const DEFAULT_CHARGE = 5000;    // 默认血量
-    const CHARGE_TIME = 15 * 60;    // 充能所需秒数
+    const WAVE_STRENGTH = 3000;     // 每波增血
+    const DEFAULT_CHARGE = 10000;    // 默认血量
+    const CHARGE_TIME = 12 * 60;    // 充能所需秒数
     const MAX_RADIUS = 42;          // 最大范围
     const MIN_RADIUS = 24;          // 最小范围
     const MAX_RADIUS_PRECENT = 0.5; // 最大范围临界血量
@@ -348,7 +348,7 @@ const onlyCoreGroundUnit = (() => {
             },
             avoidOthers() {
                 const realMass = this.mass();
-                this.type.mass = 20;
+                this.type.mass = 40;
                 this.super$avoidOthers();
                 this.type.mass = realMass;
             },
