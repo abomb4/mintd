@@ -1,0 +1,25 @@
+{
+    "conditionWave": 25,
+    "loadout": "bXNjaAB4nGNgZWBlZGDJS8xNZWBNzi9KNWZk4AHRunmlyTmppcUMDAyMDAxMQAgCAOICCHk=",
+    "startingItems": [
+        {"item": "copper", "amount": 600},
+        {"item": "lead", "amount": 800},
+        {"item": "silicon", "amount": 100},
+        {"item": "metaglass", "amount": 80},
+        {"item": "titanium", "amount": 150},
+        {"item": "graphite", "amount": 100}
+    ],
+    "requirements": [
+        {
+            "type": "ZoneWave",
+            "zone": "portal",
+            "wave": 30
+        }
+    ],
+    "configureObjective": {
+        "type": "ZoneWave",
+        "zone": "defenders",
+        "wave": 60
+    },
+    "resources": ["copper", "lead", "coal", "sand", "scrap", "titanium", "thorium"]
+}

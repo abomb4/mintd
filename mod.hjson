@@ -10,10 +10,7 @@ Enemys will be stronger with the wave number increments.
 
 塔防创意来自 @Storm_Pony ，我来实现和加一些神奇的东西。
 
-0.3.0: I want to implements a 'Global Customizable Rules' framework, map editors can customize tower defence map rules using 'Rule Block'.
-In 0.3.0, customizable ranged wave spacing time rule implemented. Welcome to try it within new map!
-Other customizable rules coming soon!
-0.3.1: Adjust data and some text; fix wave spacing bug
+0.4.0: Add two new enemy units (But only one appears in new map, making map is ... boring); Add a new map
 '''
-version: 0.3.1
+version: 0.4.0
 minGameVersion: 104

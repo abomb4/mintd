@@ -50,7 +50,7 @@ extendContent(GroundUnit, "some-unit", {
 
 const GLOBAL_RULES = (() => {
 
-    const DEBUG = true;
+    const DEBUG = false;
 
     const log = {
         error(msg) { print("[GR ERROR] " + msg); },

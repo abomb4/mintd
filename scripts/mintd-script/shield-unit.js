@@ -185,7 +185,7 @@ const ShieldHolder = (() => {
 })();
 
 //
-// 初始血量 2000，每波增加 800 ，到 100 波时大约有 80000
+// 初始血量 1200，每波增加 800 ，到 100 波时大约有 80000
 //
 
 // 仅攻击核心的陆地敌人
@@ -348,7 +348,7 @@ const onlyCoreGroundUnit = (() => {
             },
             avoidOthers() {
                 const realMass = this.mass();
-                this.type.mass = 9;
+                this.type.mass = 20;
                 this.super$avoidOthers();
                 this.type.mass = realMass;
             },
