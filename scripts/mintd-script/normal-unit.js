@@ -72,7 +72,7 @@ const onlyCoreGroundUnit = (() => {
 
 const selfBoom = (() => {
 
-    const bullet = new BombBulletType(120, 40, "shell");
+    const bullet = new BombBulletType(160, 40, "shell");
     // const bullet = extendContent(BombBulletType, 'booomb', {});
     bullet.hitEffect = Fx.pulverize;
     bullet.lifetime = 30;
@@ -100,13 +100,6 @@ const selfBoom = (() => {
 
 const unitType = (() => {
 
-    // const unit = extendContent(UnitType, 'terminator-unit', {
-    //     load() {
-    //         this.create(prov(() => new GroundUnit()));
-    //         this.weapon = superWeapon;
-    //         this.super$load();
-    //     },
-    // });
     const unit = extendContent(UnitType, 'normal-unit', {
         load() {
             this.create(onlyCoreGroundUnit);

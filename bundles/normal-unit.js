@@ -2,16 +2,16 @@
 const lib = require('mintd-script/lib');
 
 //
-// 初始血量 600，每波增加 300 ，到 100 波时大约有 30000
+// 初始血量 1200，每波增加 400 ，到 100 波时大约有 40000
 //
 
 // 仅攻击核心的陆地敌人
 const onlyCoreGroundUnit = (() => {
 
     // 每几波进行增加，设置 5 则第 6, 11, 16 波开始增加
-    const WAVE_STEP_SIZE = 1;
+    const WAVE_STEP_SIZE = 2;
     // 每次增加血量
-    const ADD_LIFE = 220 * WAVE_STEP_SIZE;
+    const ADD_LIFE = 400 * WAVE_STEP_SIZE;
 
     /**
      * 计算增加了几次生命值后对应的受伤值是多少
@@ -60,7 +60,7 @@ const onlyCoreGroundUnit = (() => {
             },
             avoidOthers() {
                 const realMass = this.mass();
-                this.type.mass = 10;
+                this.type.mass = 12;
                 this.super$avoidOthers();
                 this.type.mass = realMass;
             },
@@ -85,6 +85,7 @@ const selfBoom = (() => {
             this.super$load();
         },
     });
+    w.name = 'chain-blaster';
     w.reload = 120;
     w.bullet = bullet;
     w.inaccuracy = 0;
@@ -99,7 +100,14 @@ const selfBoom = (() => {
 
 const unitType = (() => {
 
-    const unit = extendContent(UnitType, 'fast-unit', {
+    // const unit = extendContent(UnitType, 'terminator-unit', {
+    //     load() {
+    //         this.create(prov(() => new GroundUnit()));
+    //         this.weapon = superWeapon;
+    //         this.super$load();
+    //     },
+    // });
+    const unit = extendContent(UnitType, 'normal-unit', {
         load() {
             this.create(onlyCoreGroundUnit);
             // this.weapon = terminatorMainWeapon;
